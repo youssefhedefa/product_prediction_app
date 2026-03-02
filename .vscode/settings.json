@@ -1,0 +1,6 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "npx @react-native-community": true,
+        ".": true
+    }
+}

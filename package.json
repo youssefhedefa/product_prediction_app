@@ -1,0 +1,33 @@
+{
+  "name": "product_prediction",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "npx expo start",
+    "android": "npx expo start --android",
+    "ios": "npx expo start --ios",
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@react-navigation/native": "^6.1.18",
+    "@react-navigation/native-stack": "^6.11.0",
+    "expo": "^54.0.33",
+    "react": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-gesture-handler": "~2.28.0",
+    "react-native-reanimated": "~4.1.1",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "react-native-worklets": "0.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@types/react": "~19.1.10",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

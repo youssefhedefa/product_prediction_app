@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": [
+      "es2021"
+    ],
+    "allowJs": false,
+    "jsx": "react-native",
+    "noEmit": true,
+    "isolatedModules": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@model/*": [
+        "src/model/*"
+      ],
+      "@view/*": [
+        "src/view/*"
+      ],
+      "@viewmodel/*": [
+        "src/viewmodel/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "App.tsx",
+    "index.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ],
+  "extends": "./node_modules/expo/tsconfig.base.json"
+}
