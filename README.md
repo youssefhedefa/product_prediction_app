@@ -44,17 +44,24 @@ Before you begin, ensure you have the following installed:
 
 ### Required Software
 
-1. **Node.js** (version 18 or higher)
+1. **Git** (for cloning the repository)
+   - Download from: https://git-scm.com/downloads
+   - Verify installation: `git --version`
+
+2. **Node.js** (version 18 or higher)
    - Download from: https://nodejs.org/
+   - Recommended: Download the LTS (Long Term Support) version
    - Verify installation: `node --version`
 
-2. **npm** or **Yarn** (comes with Node.js)
+3. **npm** (comes with Node.js)
    - Verify: `npm --version`
+   - Should be version 9 or higher
 
-3. **Expo CLI** (installed automatically with the project)
+4. **Expo CLI** (no global installation needed - use npx)
+   - Will be used via `npx expo` commands
    - Documentation: https://docs.expo.dev/
 
-4. **Expo Go App** (for testing on physical devices)
+5. **Expo Go App** (for testing on physical devices)
    - iOS: Download from App Store
    - Android: Download from Google Play Store
 
@@ -72,13 +79,24 @@ Before you begin, ensure you have the following installed:
 
 ## Installation & Setup
 
-### Step 1: Clone or Download the Project
+### Step 1: Clone the Project from GitHub
 
-If you haven't already, obtain the project files.
+First, ensure you have **Git** installed on your system:
+- Download Git from: https://git-scm.com/downloads
+- Verify installation: `git --version`
+
+Clone the repository:
 
 ```bash
-cd d:\product_prediction
+git clone https://github.com/youssefhedefa/product_prediction_app.git
+cd product_prediction_app
 ```
+
+Alternatively, you can download the ZIP file from GitHub:
+1. Visit: https://github.com/youssefhedefa/product_prediction_app
+2. Click the green "Code" button
+3. Select "Download ZIP"
+4. Extract the ZIP file and navigate to the folder
 
 ### Step 2: Install Dependencies
 
@@ -103,7 +121,9 @@ Check that everything installed correctly:
 npx expo --version
 ```
 
-You should see the Expo CLI version displayed.
+You should see the Expo CLI version displayed (e.g., 54.x.x).
+
+**Note**: `npx` runs packages without globally installing them. It comes bundled with npm (Node.js).
 
 ---
 
@@ -112,25 +132,46 @@ You should see the Expo CLI version displayed.
 ### Option 1: Run on Physical Device (Recommended for beginners)
 
 1. **Install Expo Go** on your iOS or Android device
+   - iOS: https://apps.apple.com/app/expo-go/id982107779
+   - Android: https://play.google.com/store/apps/details?id=host.exp.exponent
+
 2. **Start the development server:**
 
 ```bash
 npm start
 ```
 
+Or using npx:
+
+```bash
+npx expo start
+```
+
 3. **Scan the QR code:**
-   - **iOS**: Open the Camera app and scan the QR code
-   - **Android**: Open Expo Go app and scan the QR code
+   - **iOS**: Open the Camera app and scan the QR code displayed in terminal
+   - **Android**: Open Expo Go app, tap "Scan QR Code", and scan
 
 4. The app will load on your device
 
 ### Option 2: Run on Android Emulator
 
-1. **Start Android Studio and launch an emulator**
-2. **In your terminal, run:**
+1. **Install and setup Android Studio:**
+   - Download: https://developer.android.com/studio
+   - During installation, ensure "Android Virtual Device" is selected
+   - Open Android Studio → More Actions → Virtual Device Manager
+   - Create a new virtual device (recommended: Pixel 5 with Android 13+)
+
+2. **Start the emulator** from Android Studio
+
+3. **In your terminal, run:**
 
 ```bash
 npm run android
+```
+
+Or using npx:
+
+```bash
 npx expo start --android
 ```
 
@@ -138,11 +179,21 @@ The app will automatically install and launch on the emulator.
 
 ### Option 3: Run on iOS Simulator (macOS only)
 
-1. **Ensure Xcode is installed**
+1. **Install Xcode:**
+   - Download from Mac App Store
+   - Open Xcode and accept the license agreement
+   - Install Command Line Tools: `xcode-select --install`
+
 2. **In your terminal, run:**
 
 ```bash
 npm run ios
+```
+
+Or using npx:
+
+```bash
+npx expo start --ios
 ```
 
 The app will automatically launch in the iOS Simulator.
@@ -151,9 +202,11 @@ The app will automatically launch in the iOS Simulator.
 
 | Command | Description |
 |---------|-------------|
-| `npm start` | Start Expo development server |
-| `npm run android` | Run on Android device/emulator |
-| `npm run ios` | Run on iOS device/simulator |
+| `npm start` or `npx expo start` | Start Expo development server |
+| `npm run android` or `npx expo start --android` | Run on Android device/emulator |
+| `npm run ios` or `npx expo start --ios` | Run on iOS device/simulator |
+| `npx expo start --web` | Run in web browser (experimental) |
+| `npx expo start --clear` | Start with cleared cache |
 | `npm run lint` | Run ESLint to check code quality |
 | `npm test` | Run Jest tests |
 
@@ -688,6 +741,12 @@ npx tsc --noEmit
 npm run lint
 ```
 
+### Clear Cache
+If you encounter issues, try clearing the cache:
+```bash
+npx expo start --clear
+```
+
 ---
 
 ## Troubleshooting
@@ -695,10 +754,20 @@ npm run lint
 ### Common Issues
 
 **Issue**: "Metro bundler not starting"  
-**Solution**: Clear cache with `npx expo start -c`
+**Solution**: Clear cache with `npx expo start --clear`
 
 **Issue**: "Module not found"  
-**Solution**: Delete `node_modules/` and run `npm install`
+**Solution**: 
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+
+Or on Windows:
+```powershell
+Remove-Item -Recurse -Force node_modules, package-lock.json
+npm install
+```
 
 **Issue**: "App crashes on startup"  
 **Solution**: Check that all native dependencies are compatible with Expo SDK 54
