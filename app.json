@@ -4,6 +4,17 @@
     "slug": "product-prediction",
     "version": "1.0.0",
     "orientation": "portrait",
-    "platforms": ["ios", "android"]
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "android": {
+      "package": "com.anonymous.productprediction"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "da1e7382-d81f-4a36-9e90-c256fa5e9881"
+      }
+    }
   }
 }
